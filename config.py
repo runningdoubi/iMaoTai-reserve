@@ -53,7 +53,7 @@ PRIVATE_AES_KEY = os.environ.get("PRIVATE_AES_KEY")
 因为目前支持代提的还是少,所以建议默认预约最近的门店
 '''
 _RULES = {
-    'MIN_DISTANCE': 0,   # 预约你的位置最近的门店
+    'MIN_DISTANCE': 1,   # 预约你的位置最近的门店
     'MAX_SALES': 1,      # 预约本市出货量最大的门店
 }
 RESERVE_RULE = 0         # 在这里配置你的规则，只能选择其中一个
