@@ -55,7 +55,7 @@ jobs:
           python main.py
           echo "::set-output name=exit_code::$?"
       - name: Check exit status
-        run: echo "Exit status: $?" # 这里输出上一个步骤的退出状态
+        run: "echo 'Exit status:' $?" # 这里输出上一个步骤的退出状态
         if: steps.python_script.outcome == 'failure'
 
 #        pip install flake8 pytest
