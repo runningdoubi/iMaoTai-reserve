@@ -10,6 +10,7 @@ from encrypt import Encrypt
 import requests
 import hashlib
 import logging
+import sys
 
 AES_KEY = 'qbhajinldepmucsonaaaccgypwuvcjaa'
 AES_IV = '2018534749963515'
@@ -260,7 +261,7 @@ def reservation(params: dict, mobile: str):
                               headers=headers)
     if responses.status_code != 2000 or responses.status_code != 200:
         logging.info(responses.text)
-        raise RuntimeError
+        sys.exit(1)
 
     msg = f'预约:{mobile};Code:{responses.status_code};Body:{responses.text};'
     logging.info(msg)
@@ -336,3 +337,5 @@ def getUserEnergyAward(mobile: str):
     # response.json().get('message') if '无法领取奖励' in response.text else "领取奖励成功"
     logging.info(
         f'领取耐力 : mobile:{mobile} :  response code : {response.status_code}, response body : {response.text}')
+    if response.status_code != 200:
+        sys.exit(2)

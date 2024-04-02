@@ -51,6 +51,8 @@ jobs:
           GAODE_KEY: ${{ secrets.GAODE_KEY }}
         run: |
           python main.py
+      - name: check exit code
+        run: exit $?
 
 #        pip install flake8 pytest
 #        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
