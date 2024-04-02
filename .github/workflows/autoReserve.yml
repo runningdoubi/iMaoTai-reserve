@@ -53,7 +53,7 @@ jobs:
           GAODE_KEY: ${{ secrets.GAODE_KEY }}
         run: |
           python main.py
-          echo "exit_code=$?" >> "$GITHUB_ENV"
+          echo "exit_code=$?"
       - name: Check exit status
         run: |
           printf '%s\n' "$exit_code"
