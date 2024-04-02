@@ -258,9 +258,9 @@ def reservation(params: dict, mobile: str):
     params.pop('userId')
     responses = requests.post("https://app.moutai519.com.cn/xhr/front/mall/reservation/add", json=params,
                               headers=headers)
-    # if responses.status_code == 401:
-    #     send_msg('！！失败！！茅台预约', f'[{mobile}],登录token失效，需要重新登录')
-    #     raise RuntimeError
+    if responses.status_code != 2000 or responses.status_code != 200:
+        logging.info(responses.text)
+        raise RuntimeError
 
     msg = f'预约:{mobile};Code:{responses.status_code};Body:{responses.text};'
     logging.info(msg)
