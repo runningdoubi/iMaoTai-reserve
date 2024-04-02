@@ -53,11 +53,9 @@ jobs:
           GAODE_KEY: ${{ secrets.GAODE_KEY }}
         run: |
           python main.py
-          echo "exit_code=$?"
-      - name: Check exit status
-        run: |
-          printf '%s\n' "$exit_code"
-
+      - name: Check on failures
+        if: (${{ success() }} || ${{ failure() }}) && (${{ steps.python_script.outcome }} == 'failure')
+        run: echo ${{steps.python_script.outcome}} #exit 1
 #        pip install flake8 pytest
 #        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 #    - name: Lint with flake8
