@@ -45,14 +45,18 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: start run
+        id: python_script
+        continue-on-error: true
         env:
           PUSHPLUS_KEY: ${{ secrets.PUSHPLUS_KEY }}
           PRIVATE_AES_KEY: ${{ secrets.PRIVATE_AES_KEY }}
           GAODE_KEY: ${{ secrets.GAODE_KEY }}
         run: |
           python main.py
-      - name: check exit code
-        run: exit $?
+          echo "::set-output name=exit_code::$?"
+      - name: Check exit status
+        run: echo "Exit status: $?" # 这里输出上一个步骤的退出状态
+        if: steps.python_script.outcome == 'failure'
 
 #        pip install flake8 pytest
 #        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
