@@ -53,10 +53,10 @@ jobs:
           GAODE_KEY: ${{ secrets.GAODE_KEY }}
         run: |
           python main.py
-          echo "::set-output name=exit_code::$?"
+          echo "exit_code=$?" >> "$GITHUB_ENV"
       - name: Check exit status
-        run: "echo 'Exit status:' $?" # 这里输出上一个步骤的退出状态
-        if: steps.python_script.outcome == 'failure'
+        run: |
+          echo 'Exit status:' $exit_code"
 
 #        pip install flake8 pytest
 #        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
