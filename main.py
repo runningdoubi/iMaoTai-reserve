@@ -80,6 +80,7 @@ for section in configs.sections():
     except BaseException as e:
         print(e)
         logging.error(e)
+        sys.exit(1)
 
 # 推送消息
 process.send_msg(s_title, s_content)

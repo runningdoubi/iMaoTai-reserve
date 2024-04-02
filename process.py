@@ -261,7 +261,7 @@ def reservation(params: dict, mobile: str):
                               headers=headers)
     if responses.status_code != 2000 or responses.status_code != 200:
         logging.info(responses.text)
-        sys.exit(1)
+        raise RuntimeError
 
     msg = f'预约:{mobile};Code:{responses.status_code};Body:{responses.text};'
     logging.info(msg)
