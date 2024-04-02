@@ -55,7 +55,7 @@ jobs:
           python main.py
       - name: Check on failures
         if: (${{ success() }} || ${{ failure() }}) && (${{ steps.python_script.outcome }} == 'failure')
-        run: echo ${{steps.python_script.outcome}} #exit 1
+        run: exit 1 #exit 1
 #        pip install flake8 pytest
 #        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 #    - name: Lint with flake8
