@@ -56,7 +56,7 @@ jobs:
           echo "exit_code=$?" >> "$GITHUB_ENV"
       - name: Check exit status
         run: |
-          echo 'Exit status:' $exit_code"
+          printf '%s\n' "$exit_code"
 
 #        pip install flake8 pytest
 #        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
