@@ -259,7 +259,7 @@ def reservation(params: dict, mobile: str):
     params.pop('userId')
     responses = requests.post("https://app.moutai519.com.cn/xhr/front/mall/reservation/add", json=params,
                               headers=headers)
-    logging.info(responses.status_code)
+    logging.info(json.loads(responses))
     logging.info(json.loads(responses.text))
     logging.info(json.loads(responses.text)['code'])
     if responses.status_code != 2000 or responses.status_code != 200:
