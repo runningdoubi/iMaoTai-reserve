@@ -262,6 +262,8 @@ def reservation(params: dict, mobile: str):
     responseCode = json.loads(responses.text)['code']
     logging.info('==========')
     logging.info(responseCode)
+    logging.info('==========')
+    logging.info(responses.text)
     if responses.status_code != 200 or responseCode != 200 or responseCode != 2000:
         logging.info(responses.text)
         raise RuntimeError
