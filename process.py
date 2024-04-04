@@ -260,6 +260,8 @@ def reservation(params: dict, mobile: str):
     responses = requests.post("https://app.moutai519.com.cn/xhr/front/mall/reservation/add", json=params,
                               headers=headers)
     responseCode = json.loads(responses.text)['code']
+    logging.info('==========')
+    logging.info(responseCode)
     if responses.status_code != 200 or responseCode != 200 or responseCode != 2000:
         logging.info(responses.text)
         raise RuntimeError
