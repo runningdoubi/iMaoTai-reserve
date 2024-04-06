@@ -252,6 +252,7 @@ def send_msg(title, content):
                                   'title': title,
                                   'content': content})
     logging.info(f'通知推送结果：{r.status_code, r.text}')
+    sys.exit(0)
 
 
 # 核心代码，执行预约
