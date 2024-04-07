@@ -54,5 +54,5 @@ jobs:
         run: |
           python main.py
       - name: Check on failures
-        if: ${{ failure() && steps.python_script.conclusion == 'failure' }}
+        if: ${{ failure() && steps.python_script.outcome == 'failure' }}
         run: exit 1
